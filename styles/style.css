@@ -1,0 +1,190 @@
+@font-face {
+    font-family: 'aviny';
+    src: url('../fonts/aviny.eot');
+    src: url('../fonts/aviny.woff2') format('woff2'), url('../fonts/aviny.woff') format('woff'), url('../fonts/aviny.ttf') format('truetype');
+}
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    
+body {
+    font-family: sans-serif;
+    display: flex;
+    /*flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+    background: #333;
+    overflow-x: hidden; /* because of 'rotate' & 'origin' we have scroll*/
+}
+
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    background: #fafafa;
+    padding: 50px;
+    transition: transform 0.4s linear;
+    -webkit-transition: transform 0.4s linear;
+    -moz-transition: transform 0.4s linear;
+    -ms-transition: transform 0.4s linear;
+    -o-transition: transform 0.4s linear;
+    transform-origin: top left;/* the origin of transform is important */
+}
+
+.container.show-nav {
+    transform: rotate(-20deg); /* the direction of rotation is the opposite of mathematics*/
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+}
+
+/*-------   Circle Menu   ------*/
+
+.container .circle-container {
+    position: fixed;/* pos */
+    top: 0;
+    left: 0;
+    transition: transform 0.4s linear;
+    -webkit-transition: transform 0.4s linear;
+    -moz-transition: transform 0.4s linear;
+    -ms-transition: transform 0.4s linear;
+    -o-transition: transform 0.4s linear;
+    transform-origin: top left;/* the transform origin is important */
+}
+
+.container.show-nav .circle-container {
+    /* rotate by clicking menu and at the same time by container */
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+.container .circle-container .circle {
+    position: relative;/* pos */
+    width: 200px;
+    height: 200px;
+    background: #faa000;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    /* to have icons in the middle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* to have 1/4 of circle */
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+    .container .circle-container .circle button {
+    position: absolute;/* pos */
+    /* just to state in right situation */
+    top: 60%;
+    left: 60%;
+    background: transparent;/* transparent bg */
+    color:#fff;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+button#close {
+    /* just to state in right situation */
+    top: 30%;
+    left: 70%;
+    /* just rotate to present correctly */
+    transform:rotate(20deg) ;
+    -webkit-transform:rotate(20deg) ;
+    -moz-transform:rotate(20deg) ;
+    -ms-transform:rotate(20deg) ;
+    -o-transform:rotate(20deg) ;
+}
+
+/*--------    END OF Circle Menu     --------*/
+
+.container .content {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.container .content img {
+    width: 95%;
+    margin: 30px auto;
+}
+
+.container .content h1 {
+    font-size: 2.5rem;
+}
+
+.container .content p {
+    margin: 15px 0;
+    line-height: 2rem;
+}
+
+/*-----      Navbar    -----*/
+
+nav {
+    position: fixed;/* pos */
+    bottom: 50px;
+    left: -150px;/* to be out of page */
+    transition: transform 0.4s linear;
+    -webkit-transition: transform 0.4s linear;
+    -moz-transition: transform 0.4s linear;
+    -ms-transition: transform 0.4s linear;
+    -o-transition: transform 0.4s linear;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;
+    align-items: center;*/
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li+li {
+    margin-left: 22px;
+}
+
+/* use '+' to select the sibling after that */
+nav ul li+li+li {
+    margin-left: 36px;
+}
+
+nav ul li a {
+    color:#f1f1f1;
+    text-decoration: none;
+}
+
+nav ul svg {
+    font-size: 17px;
+    margin-right: 5px;
+}
+
+.container.show-nav+nav {
+    /* to come to the page */
+    transform: translateX(200px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transition-delay: 0.2s;/* to appeadr by delay */
+}
+
